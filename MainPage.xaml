@@ -1,0 +1,161 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MyBody.MainPage">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="16">
+
+            <!-- Barra Superior: Alternar Tema & Idioma -->
+            <Grid ColumnDefinitions="*,*" ColumnSpacing="10" Margin="0,0,0,5">
+                <!-- Seletor de Idioma -->
+                <Picker x:Name="pickerIdioma"
+                        Grid.Column="0"
+                        Title="Idioma / Language"
+                        SelectedIndex="0"
+                        SelectedIndexChanged="OnIdiomaChanged">
+                    <Picker.Items>
+                        <x:String>Português</x:String>
+                        <x:String>English</x:String>
+                        <x:String>Español</x:String>
+                    </Picker.Items>
+                </Picker>
+
+                <!-- Botão de Alternar Tema (Claro / Escuro) -->
+                <Button x:Name="btnAlternarTema"
+                        Grid.Column="1"
+                        Text="🌙 / ☀️ Tema"
+                        BackgroundColor="#333333"
+                        TextColor="White"
+                        FontSize="13"
+                        HeightRequest="44"
+                        Clicked="OnAlternarTemaClicked" />
+            </Grid>
+
+            <!-- Card: Dados Pessoais -->
+            <Border Padding="16">
+                <VerticalStackLayout Spacing="10">
+                    <Label x:Name="lblDadosPessoais"
+                           Text="📊 Dados Pessoais &amp; Metas"
+                           FontSize="18"
+                           FontAttributes="Bold"
+                           TextColor="{StaticResource PrimaryColor}" />
+
+                    <Label x:Name="lblPeso" Text="Peso (kg)" FontSize="13" />
+                    <Entry x:Name="txtPeso" Keyboard="Numeric" Placeholder="Ex: 75.5" />
+
+                    <Label x:Name="lblAltura" Text="Altura (cm)" FontSize="13" />
+                    <Entry x:Name="txtAltura" Keyboard="Numeric" Placeholder="Ex: 175" />
+
+                    <Label x:Name="lblIdade" Text="Idade" FontSize="13" />
+                    <Entry x:Name="txtIdade" Keyboard="Numeric" Placeholder="Ex: 28" />
+
+                    <Label x:Name="lblSexo" Text="Sexo Biológico" FontSize="13" />
+                    <Picker x:Name="pickerSexo">
+                        <Picker.Items>
+                            <x:String>Masculino</x:String>
+                            <x:String>Feminino</x:String>
+                        </Picker.Items>
+                    </Picker>
+
+                    <Label x:Name="lblAtividade" Text="Atividade Física" FontSize="13" />
+                    <Picker x:Name="pickerAtividade">
+                        <Picker.Items>
+                            <x:String>Sedentário</x:String>
+                            <x:String>Levemente Ativo</x:String>
+                            <x:String>Moderadamente Ativo</x:String>
+                            <x:String>Muito Ativo</x:String>
+                        </Picker.Items>
+                    </Picker>
+
+                    <Button x:Name="btnCalcularSalvar"
+                            Text="Calcular Metas e Salvar"
+                            Clicked="OnSalvarDadosClicked"
+                            Margin="0,8,0,0" />
+                </VerticalStackLayout>
+            </Border>
+
+            <!-- Card: Hidratação -->
+            <Border Padding="16">
+                <VerticalStackLayout Spacing="10">
+                    <Label x:Name="lblHidratacao"
+                           Text="💧 Hidratação Diária"
+                           FontSize="18"
+                           FontAttributes="Bold"
+                           TextColor="{StaticResource PrimaryColor}" />
+
+                    <Label x:Name="lblMetaAgua"
+                           Text="Meta de água: 0 L / dia"
+                           FontSize="20"
+                           FontAttributes="Bold"
+                           TextColor="#007ACC" />
+
+                    <Label x:Name="lblCalcPeso"
+                           Text="Calculado automaticamente (35ml x seu peso)"
+                           FontSize="12"
+                           TextColor="Gray" />
+
+                    <Button x:Name="btnZerarHoje"
+                            Text="Zerar Registro de Hoje"
+                            BackgroundColor="#6B7280"
+                            Clicked="OnZerarHojeClicked" />
+                </VerticalStackLayout>
+            </Border>
+
+            <!-- Card: Consumo Calórico -->
+            <Border Padding="16">
+                <VerticalStackLayout Spacing="10">
+                    <Label x:Name="lblConsumoCalorico"
+                           Text="🍎 Consumo Calórico de Hoje"
+                           FontSize="18"
+                           FontAttributes="Bold"
+                           TextColor="{StaticResource PrimaryColor}" />
+
+                    <Label x:Name="lblTotalCalorias"
+                           Text="Total Consumido Hoje: 0 kcal"
+                           FontSize="18"
+                           FontAttributes="Bold"
+                           TextColor="{StaticResource AccentOrange}" />
+
+                    <Label x:Name="lblRefeicoesDia"
+                           Text="Refeições do Dia:"
+                           FontAttributes="Bold"
+                           FontSize="14" />
+
+                    <VerticalStackLayout x:Name="containerRefeicoes" Spacing="6" />
+
+                    <Label x:Name="lblCadastrarRefeicao"
+                           Text="➕ Cadastrar Refeição"
+                           FontSize="16"
+                           FontAttributes="Bold"
+                           Margin="0,10,0,0" />
+
+                    <Label x:Name="lblMomentoRefeicao" Text="Momento da Refeição:" FontSize="13" />
+                    <Picker x:Name="pickerMomento">
+                        <Picker.Items>
+                            <x:String>Café da Manhã</x:String>
+                            <x:String>Almoço</x:String>
+                            <x:String>Lanche da Tarde</x:String>
+                            <x:String>Jantar</x:String>
+                            <x:String>Ceia / Snaking</x:String>
+                        </Picker.Items>
+                    </Picker>
+
+                    <Label x:Name="lblSelecioneAlimento" Text="Selecione o Alimento:" FontSize="13" />
+                    <Picker x:Name="pickerAlimentos"
+                            SelectedIndexChanged="OnAlimentoSelected" />
+
+                    <Label x:Name="lblQtdGramas" Text="Quantidade em Gramas (g):" FontSize="13" />
+                    <Entry x:Name="txtQuantidade" Keyboard="Numeric" Placeholder="Ex: 100" />
+
+                    <Button x:Name="btnAdicionarRefeicao"
+                            Text="Adicionar Refeição"
+                            Clicked="OnAdicionarRefeicaoClicked"
+                            Margin="0,8,0,0" />
+                </VerticalStackLayout>
+            </Border>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
+    

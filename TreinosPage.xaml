@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MyBody.TreinosPage">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="16">
+
+            <Label x:Name="lblTituloFicha"
+                   Text="Minha Ficha de Treino"
+                   FontSize="24"
+                   FontAttributes="Bold"
+                   TextColor="{StaticResource PrimaryColor}" />
+
+            <!-- Seletor Principal de Ficha / Dia -->
+            <Border Padding="16">
+                <VerticalStackLayout Spacing="10">
+                    <Label x:Name="lblDiaFicha"
+                           Text="📅 Selecione o Dia / Ficha de Treino:"
+                           FontAttributes="Bold"
+                           FontSize="15" />
+
+                    <Picker x:Name="pickerDiaFicha"
+                            SelectedIndexChanged="OnDiaFichaChanged">
+                        <Picker.Items>
+                            <x:String>Treino A (Segunda - Peito e Tríceps)</x:String>
+                            <x:String>Treino B (Terça - Costas e Bíceps)</x:String>
+                            <x:String>Treino C (Quarta - Membros Inferiores)</x:String>
+                            <x:String>Treino D (Quinta - Ombros e Abdômen)</x:String>
+                            <x:String>Treino E (Sexta - Cardio / Full Body)</x:String>
+                        </Picker.Items>
+                    </Picker>
+                </VerticalStackLayout>
+            </Border>
+
+            <!-- Card: Exercícios da Ficha Selecionada -->
+            <Border Padding="16">
+                <VerticalStackLayout Spacing="12">
+                    <Grid ColumnDefinitions="*,Auto">
+                        <Label x:Name="lblExerciciosDaFicha"
+                               Text="🏋️ Exercícios do Dia"
+                               FontSize="18"
+                               FontAttributes="Bold"
+                               VerticalOptions="Center" />
+
+                        <Button x:Name="btnZerarChecklist"
+                                Grid.Column="1"
+                                Text="🔄 Zerar Treino"
+                                FontSize="12"
+                                HeightRequest="36"
+                                Padding="12,0"
+                                BackgroundColor="#6B7280"
+                                Clicked="OnZerarChecklistClicked" />
+                    </Grid>
+
+                    <VerticalStackLayout x:Name="containerExerciciosFicha" Spacing="10" />
+                </VerticalStackLayout>
+            </Border>
+
+            <!-- Card: Adicionar Exercício Extra -->
+            <Border Padding="16">
+                <VerticalStackLayout Spacing="12">
+                    <Label x:Name="lblAdicionarExercicio"
+                           Text="➕ Adicionar Exercício"
+                           FontSize="18"
+                           FontAttributes="Bold" />
+
+                    <Label x:Name="lblGrupoMuscular" Text="Grupo Muscular:" FontSize="13" />
+                    <Picker x:Name="pickerGrupoMuscular"
+                            SelectedIndexChanged="OnGrupoMuscularChanged">
+                        <Picker.Items>
+                            <x:String>Peitoral</x:String>
+                            <x:String>Dorsal / Costas</x:String>
+                            <x:String>Quadríceps / Pernas</x:String>
+                            <x:String>Posterior de Coxa</x:String>
+                            <x:String>Ombros / Deltoides</x:String>
+                            <x:String>Bíceps</x:String>
+                            <x:String>Tríceps</x:String>
+                            <x:String>Panturrilha</x:String>
+                            <x:String>Abdômen</x:String>
+                        </Picker.Items>
+                    </Picker>
+
+                    <Label x:Name="lblNomeExercicio" Text="Nome do Exercício:" FontSize="13" />
+                    <Picker x:Name="pickerNomeExercicio"
+                            SelectedIndexChanged="OnNomeExercicioSelected" />
+
+                    <Entry x:Name="txtNomeExercicioCustom"
+                           Placeholder="Digite o nome do exercício customizado"
+                           IsVisible="False" />
+
+                    <Grid ColumnDefinitions="*,*,*" ColumnSpacing="10">
+                        <VerticalStackLayout Grid.Column="0">
+                            <Label x:Name="lblSeries" Text="Séries" FontSize="13" />
+                            <Entry x:Name="txtSeries" Keyboard="Numeric" Placeholder="4" HorizontalTextAlignment="Center" />
+                        </VerticalStackLayout>
+
+                        <VerticalStackLayout Grid.Column="1">
+                            <Label x:Name="lblReps" Text="Reps" FontSize="13" />
+                            <Entry x:Name="txtReps" Keyboard="Numeric" Placeholder="12" HorizontalTextAlignment="Center" />
+                        </VerticalStackLayout>
+
+                        <VerticalStackLayout Grid.Column="2">
+                            <Label x:Name="lblCarga" Text="Carga (kg)" FontSize="13" />
+                            <Entry x:Name="txtCarga" Keyboard="Numeric" Placeholder="20" HorizontalTextAlignment="Center" />
+                        </VerticalStackLayout>
+                    </Grid>
+
+                    <Button x:Name="btnSalvarExercicio"
+                            Text="Adicionar a esta Ficha"
+                            Clicked="OnSalvarExercicioClicked"
+                            Margin="0,8,0,0" />
+                </VerticalStackLayout>
+            </Border>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

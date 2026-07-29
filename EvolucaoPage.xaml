@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MyBody.EvolucaoPage">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="15">
+
+            <Label x:Name="lblTituloEvolucao"
+                   Text="📈 Métricas Corporais &amp; Evolução"
+                   FontSize="22"
+                   FontAttributes="Bold" />
+
+            <!-- Card: Cálculos de IMC e Taxa Metabólica Basal -->
+            <Border Padding="15" StrokeShape="RoundRectangle 10">
+                <VerticalStackLayout Spacing="8">
+                    <Label Text="📊 Análise Corporal Automaticamente Calculada"
+                           FontSize="16"
+                           FontAttributes="Bold" />
+
+                    <Label x:Name="lblIMC"
+                           Text="IMC: --"
+                           FontSize="16"
+                           TextColor="#512BD4"
+                           FontAttributes="Bold" />
+
+                    <Label x:Name="lblTMB"
+                           Text="Gasto Calórico Basal (TMB): --"
+                           FontSize="14" />
+
+                    <Label x:Name="lblGastoTotal"
+                           Text="Gasto Energético Total: --"
+                           FontSize="14"
+                           TextColor="#E65100"
+                           FontAttributes="Bold" />
+                </VerticalStackLayout>
+            </Border>
+
+            <!-- Card: Histórico de Registro de Peso -->
+            <Border Padding="15" StrokeShape="RoundRectangle 10">
+                <VerticalStackLayout Spacing="10">
+                    <Label x:Name="lblHistoricoPeso"
+                           Text="📝 Histórico de Peso"
+                           FontSize="18"
+                           FontAttributes="Bold" />
+
+                    <VerticalStackLayout x:Name="containerHistoricoPeso" Spacing="5" />
+
+                    <Button x:Name="btnRegistrarPeso"
+                            Text="Registrar Novo Peso de Hoje"
+                            Clicked="OnRegistrarPesoClicked"
+                            Margin="0,5,0,0" />
+                </VerticalStackLayout>
+            </Border>
+
+            <!-- Card: Fotos de Progresso -->
+            <Border Padding="15" StrokeShape="RoundRectangle 10">
+                <VerticalStackLayout Spacing="10">
+                    <Label x:Name="lblFotosEvolucao"
+                           Text="📸 Fotos de Progresso"
+                           FontSize="18"
+                           FontAttributes="Bold" />
+
+                    <!-- Galeria Horizontal de Fotos -->
+                    <ScrollView Orientation="Horizontal">
+                        <HorizontalStackLayout x:Name="containerFotos" Spacing="10" />
+                    </ScrollView>
+
+                    <Button x:Name="btnSelecionarFoto"
+                            Text="Adicionar Foto de Hoje"
+                            Clicked="OnSelecionarFotoClicked"
+                            Margin="0,5,0,0" />
+                </VerticalStackLayout>
+            </Border>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
