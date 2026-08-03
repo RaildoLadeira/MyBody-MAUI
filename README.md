@@ -1,39 +1,38 @@
-# 🏋️ MyBody — Fitness & Nutrition Management App
+# 📱 MyBody - Cross-Platform Fitness & Nutrition Manager
 
-**MyBody** is a full-featured cross-platform application built with **C#** and **.NET MAUI**, designed to help users track workout routines, manage daily nutrition, and monitor body progression metrics.
+![C#](https://img.shields.io/badge/C%23-239120?style=for-the-badge&logo=c-sharp&logoColor=white)
+![.NET MAUI](https://img.shields.io/badge/.NET%20MAUI-512BD4?style=for-the-badge&logo=dotnet&logoColor=white)
+![XAML](https://img.shields.io/badge/XAML-0078D4?style=for-the-badge&logo=xaml&logoColor=white)
+![Platform](https://img.shields.io/badge/Platform-Android%20%7C%20iOS%20%7C%20Windows-lightgrey?style=for-the-badge)
 
----
-
-## 🚀 Key Features
-
-- **⚙️ Goals & Hydration:** Automatically calculates daily water intake goals based on body weight ($35\text{ ml/kg}$).
-- **🍎 Nutritional Logger:** Calorie and macro calculator supporting both gram-based and unit-based foods (e.g., eggs vs. chicken breast).
-- **🏋️ Smart Workout Routines:**
-  - Day-by-day split training routines (Workouts A through E).
-  - Exercise selection grouped by muscle target with custom input fallback.
-  - Interactive exercise checklist with visual status updates (strikethrough / completed highlight) and a daily reset option.
-  - Automatic persistent storage for added, modified, or deleted exercises.
-- **📈 Progress & Body Metrics:**
-  - Automatic Body Mass Index (BMI) calculation with weight status classification.
-  - Basal Metabolic Rate (BMR) and Total Daily Energy Expenditure (TDEE) estimation using the Harris-Benedict formula.
-  - Weight tracking history.
-  - Local image gallery for body transformation photos.
-- **🌐 Real-Time Internationalization (i18n):** Dynamic runtime switching between **English**, **Portuguese**, and **Spanish** across all tabs, menus, and controls.
-- **🌙 Dark Mode & Light Mode Support:** Built-in dynamic theme toggling adapted for desktop (Windows) and mobile environments.
-- **💾 Local Data Persistence:** Secure offline data storage using `Preferences` and JSON serialization (`System.Text.Json`).
+**MyBody** é um aplicativo mobile multiplataforma desenvolvido em **.NET MAUI** e **C#** focado no acompanhamento diário de treinos, planejamento nutricional e acompanhamento de metas corporais.
 
 ---
 
-## 🛠️ Tech Stack
+## 🌍 Recursos Principais (Features)
 
-- **Language:** C# (.NET 8 / .NET 9)
-- **Framework:** .NET MAUI (Multi-platform App UI)
-- **UI & Layout:** XAML, AppThemeBinding, Responsive Grid & Flex Layouts
-- **Architecture & Persistence:** System.Text.Json, Local Preferences Storage, Event-Driven UI Architecture
+- **Internationalization (i18n):** Suporte nativo e alternância em tempo real para 3 idiomas (**Português, Inglês e Espanhol**) através do `LocalizationService`.
+- **Gestão de Treinos Fichas Personalizadas:** Seleção dinâmica de exercícios por grupo muscular, formatação automática de carga (kg) e repetições, com checklist diário.
+- **Protocolos de Nutrição & Dieta:** Acompanhamento de refeições adaptado à rotina do usuário (*Treino Noturno*, *Treino Vespertino* e *Dia Sem Treino*) com cálculo automático de calorias.
+- **Acompanhamento Corporal & Metas:** Registro de peso, altura, % de gordura (BF) e cálculo de macros de acordo com o objetivo (*Cutting, Bulking, Maintenance*).
+- **Suporte UX/UI:** Compatibilidade nativa com Dark Mode (Modo Escuro) e interfaces responsivas.
 
 ---
 
-## 👨‍💻 Developer
+## 🛠️ Tecnologias e Arquitetura
 
-**Raildo Santos Ladeira**  
-*C# & .NET Developer*
+- **Linguagem & Framework:** C# / .NET MAUI 10
+- **Interface:** XAML com Data Binding e arquitetura orientada a objetos (POO)
+- **Persistência de Dados:** Estrutura para banco de dados local (`DatabaseService.cs`)
+- **Padrão de Tradução:** Dicionário estático responsivo a eventos de troca de cultura (`OnLanguageChanged`)
+
+---
+
+## 📱 Estrutura do Projeto
+
+```text
+MyBody/
+├── Models/              # Modelos de dados (RotinaModel, Exercicio, Refeicao)
+├── Services/            # Serviços (LocalizationService, DatabaseService, PlanoService)
+├── Views/              # Páginas da aplicação (MainPage, TreinosPage, EvolucaoPage)
+└── AppShell.xaml        # Estrutura de navegação por abas (TabBar)
